@@ -7,12 +7,12 @@ func send(body string, to string) {
 	from := "youremail@gmail.com"
 	password := "yourpassword"
 
-	msg := "From: " + from + "\n" +
-		"To: " + to + "\n" +
-		"MIME-Version: 1.0 \n" +
-		"Content-type: text/html \n" +
-		"Subject: Your messages subject\n\n" +
-		body
+	msg := "From: " + from + "\r\n" +
+		"To: " + to + "\r\n" +
+		"MIME-Version: 1.0" + " \r\n" +
+		"Content-type: text/html" + "\r\n" +
+		"Subject: Your messages subject" + "\r\n\r\n" +
+		body + "\r\n"
 
 	err := smtp.SendMail("smtp.gmail.com:587", smtp.PlainAuth("", from, password, "smtp.gmail.com"), from, []string{to}, []byte(msg))
 	if err != nil {
